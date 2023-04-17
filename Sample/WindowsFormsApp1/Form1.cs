@@ -29,6 +29,8 @@ namespace WindowsFormsApp1 {
             double ans = Math.Pow((double)nudX.Value, (double)nudY.Value);
 
             tbResult.Text = ans.ToString();
+
+            //tbResult.Text = (Math.Pow((double)nudX.Value, (double)nudY.Value).ToString());
         }
     }
 }
