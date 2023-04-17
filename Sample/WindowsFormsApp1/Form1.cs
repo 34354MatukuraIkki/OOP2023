@@ -26,7 +26,7 @@ namespace WindowsFormsApp1 {
         //イベントハンドラ
         private void btPow_Click(object sender, EventArgs e) {
             
-            double ans = Math.Pow((int)nudX.Value, (int)nudY.Value);
+            double ans = Math.Pow((double)nudX.Value, (double)nudY.Value);
 
             tbResult.Text = ans.ToString();
         }
