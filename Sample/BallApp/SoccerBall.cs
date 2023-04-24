@@ -25,7 +25,7 @@ namespace BallApp {
             int speedY = random.Next(-20, 20);
             if (speedX == 0)
                 speedX = random.Next(1, 20);
-            if(speedY　==　0)
+            if (speedY　==　0)
                 speedY = random.Next(1, 20);
 
             Image = Image.FromFile(@"pic\soccer_ball.png");

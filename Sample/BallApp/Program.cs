@@ -11,7 +11,8 @@ namespace BallApp {
         private Timer   moveTimer;    //タイマー用
         SoccerBall      soccerBall;
         PictureBox      pb;           //画像を表示するコントロール
-
+        
+        private int ballCount           = 0;                        //ボールカウンター
         private List<SoccerBall> balls  = new List<SoccerBall>();   //ボールインスタンス格納用
         private List<PictureBox> pbs    = new List<PictureBox>();   //表示用
 
@@ -45,6 +46,8 @@ namespace BallApp {
 
             balls.Add(soccerBall);                                                  //ボールをリストに追加
             pbs.Add(pb);                                                            //画像をリストに追加
+
+            this.Text       = "BallGame" + (++ballCount);                           //ボールの個数表示
 
             moveTimer.Start();                                                      //タイマースタート
         }
