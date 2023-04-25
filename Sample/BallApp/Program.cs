@@ -11,7 +11,6 @@ namespace BallApp {
         private Timer   moveTimer;    //タイマー用
         //SoccerBall      soccerBall;
         //TennisBall      tennisBall;
-        Obj             obj;
         PictureBox      pb;           //画像を表示するコントロール
         
         private int ballCount               = 0;                            //ボールカウンター
@@ -38,26 +37,24 @@ namespace BallApp {
 
         //マウスクリック時のイベントハンドラ
         private void Program_MouseClick(object sender, MouseEventArgs e) {
+            Obj ballObj = null;
+            pb      = new PictureBox();
             //ボールインスタンス生成
-            pb              = new PictureBox();
-
             if (e.Button == MouseButtons.Left)
             {
                 pb.Size = new Size(50, 50);                                             //画像の表示サイズ
-                obj = new SoccerBall(e.X - 25, e.Y - 25);
-                balls.Add(obj);                                                         //サッカーボールをリストに追加
-            }
+                ballObj = new SoccerBall(e.X - 25, e.Y - 25);}
             else if (e.Button == MouseButtons.Right)
             {
                 pb.Size = new Size(30, 30);                                             //画像の表示サイズ
-                obj = new TennisBall(e.X - 15, e.Y - 15);
-                balls.Add(obj);                                                         //テニスボールをリストに追加
+                ballObj = new TennisBall(e.X - 15, e.Y - 15);
             }
 
+            pb.Image        = ballObj.Image;
+            pb.Location     = new Point((int)ballObj.PosX, (int)ballObj.PosY);          //画像の位置
             pb.SizeMode     = PictureBoxSizeMode.StretchImage;                          //画像の表示モード
-            pb.Location     = new Point((int)obj.PosX, (int)obj.PosY);                  //画像の位置
-            pb.Image        = obj.Image;
             pb.Parent       = this;
+            balls.Add(ballObj);                                                         //ボールをリストに追加
             pbs.Add(pb);                                                                //画像をリストに追加
 
             this.Text       = "BallGame" + (++ballCount);                               //ボールの個数表示
