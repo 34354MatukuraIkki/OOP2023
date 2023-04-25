@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BallApp {
     class TennisBall : Obj {
+        private static int count;
         Random random = new Random();   //乱数インスタンス
+
+        public static int Count { get => count; set => count = value; }
 
         public TennisBall(double mousePosX,double mousePosY)
             : base(mousePosX, mousePosY, @"pic\tennis_ball.png") {
@@ -20,7 +23,7 @@ namespace BallApp {
             MoveX = speedX;
             MoveY = speedY;
 
-            //Count++;
+            Count++;
         }
 
         public override void Move() {

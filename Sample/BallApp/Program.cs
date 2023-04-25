@@ -13,7 +13,6 @@ namespace BallApp {
         //TennisBall      tennisBall;
         PictureBox      pb;           //画像を表示するコントロール
         
-        private int ballCount               = 0;                            //ボールカウンター
         private List<Obj>           balls   = new List<Obj>();              //ボールインスタンス格納用 
         private List<PictureBox>    pbs     = new List<PictureBox>();       //表示用
 
@@ -29,10 +28,16 @@ namespace BallApp {
             this.BackColor      = Color.Blue;
             this.Text           = "BallGame";
             this.MouseClick     += Program_MouseClick;
-            
+            this.KeyDown        += Program_KeyDown;
+
             moveTimer           = new Timer();
             moveTimer.Interval  = 20;               //タイマーのインターバル（ｍｓ）   
             moveTimer.Tick      += MoveTimer_Tick;  //デリゲート登録
+        }
+
+        //キーが押された時のイベントハンドラ
+        private void Program_KeyDown(object sender, KeyEventArgs e) {
+            
         }
 
         //マウスクリック時のイベントハンドラ
@@ -57,8 +62,9 @@ namespace BallApp {
             balls.Add(ballObj);                                                         //ボールをリストに追加
             pbs.Add(pb);                                                                //画像をリストに追加
 
-            this.Text       = "BallGame" + (++ballCount);                               //ボールの個数表示
-            //this.Text = "BallGame" + balls.Count;                                     //ボールの個数表示
+            this.Text = "BallGame"          + balls.Count                               //ボールの個数表示
+                      + "　サッカーボール"  + SoccerBall.Count 
+                      + "　テニスボール"    + TennisBall.Count;
 
             moveTimer.Start();                                                          //タイマースタート
         }

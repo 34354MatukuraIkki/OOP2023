@@ -9,11 +9,11 @@ namespace BallApp {
     class SoccerBall :Obj {
         //フィールド
        
-        //private static int count;
+        private static int count;
         Random random = new Random();   //乱数インスタンス
 
         //プロパティ
-        //public static int Count { get => count; set => count = value; }
+        public static int Count { get => count; set => count = value; }
 
 
         //コンストラクタ
@@ -30,7 +30,7 @@ namespace BallApp {
             MoveX = speedX;
             MoveY = speedY;
 
-            //Count++;
+            Count++;
         }
 
         //メソッド
