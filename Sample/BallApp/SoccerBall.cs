@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BallApp {
     class SoccerBall :Obj {
@@ -34,14 +35,24 @@ namespace BallApp {
         }
 
         //メソッド
-        public override void Move() {
-            if (PosX > 730 || PosX < 0)     //X座標の壁判定
+        public override void Move(PictureBox pbBar, PictureBox pbBall) {
+
+            Rectangle rBar  = new Rectangle(pbBar.Location.X, pbBar.Location.Y,
+                                            pbBar.Width, pbBar.Height);
+
+            Rectangle rBall = new Rectangle(pbBall.Location.X, pbBall.Location.Y,
+                                            pbBall.Width, pbBall.Height);
+
+            if (PosX > 730 || PosX < 0 || rBar.IntersectsWith(rBall))     //X座標の壁判定
                 MoveX *= -1;
             if (PosY > 500 || PosY < 0)     //Y座標の壁判定
                 MoveY *= -1;
 
             PosX += MoveX;
             PosY += MoveY;
+        }
+
+        public override void Move(Keys direction) {
         }
     }
 }

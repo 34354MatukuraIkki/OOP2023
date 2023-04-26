@@ -4,6 +4,7 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BallApp {
     abstract class Obj {                //抽象クラス (abstract)
@@ -28,6 +29,8 @@ namespace BallApp {
         }
 
         //移動メソッド（抽象メソッド）
-        public abstract void Move();
+        public abstract void Move(PictureBox pbBar, PictureBox pbBall);
+        public abstract void Move(Keys direction);
+
     }
 }
