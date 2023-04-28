@@ -15,22 +15,29 @@ namespace WindowsFormsApp1 {
         }
 
         private void btButton_Click(object sender, EventArgs e) {
+
             //tbAns.Text = (int.Parse(tbNum1.Text) + int.Parse(tbNum2.Text)).ToString();
+
             int num1 = int.Parse(tbNum1.Text);
             int num2 = int.Parse(tbNum2.Text);
             int sum = num1 + num2;
             tbAns.Text = sum.ToString();
-
         }
 
-        //イベントハンドラ
-        private void btPow_Click(object sender, EventArgs e) {
-            
-            double ans = Math.Pow((double)nudX.Value, (double)nudY.Value);
+        private void button1_Click(object sender, EventArgs e) {
 
-            tbResult.Text = ans.ToString();
+            //int x = (int)nudX.Value;
+            //int y = (int)nudY.Value;
+            //int z = 1;
 
-            //tbResult.Text = (Math.Pow((double)nudX.Value, (double)nudY.Value).ToString());
+            //for (int i = 0; i < y; i++)
+            //{
+            //    z = z * x;
+            //}
+
+            //tbPow.Text = z.ToString();
+
+            tbPow.Text = Math.Pow((double)nudX.Value , (double)nudY.Value).ToString();
         }
     }
 }

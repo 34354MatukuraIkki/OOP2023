@@ -7,52 +7,46 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BallApp {
-    class SoccerBall :Obj {
+    class SoccerBall :Obj{
         //フィールド
-       
-        private static int count;
         Random random = new Random();   //乱数インスタンス
-
-        //プロパティ
-        public static int Count { get => count; set => count = value; }
-
+        private static int ballCnt = 0;
 
         //コンストラクタ
-        public SoccerBall(double mousePosX, double mousePosY)
-            : base(mousePosX, mousePosY, @"pic\soccer_ball.png") {
+        public SoccerBall( double xp, double yp) : base(xp, yp,@"pic\soccer_ball.png") {
+        
+            int rndX = random.Next(-25, 25);
+            MoveX = (rndX != 0 ? rndX : 1); //乱数で移動量を設定
 
-            int speedX = random.Next(-20, 20);
-            int speedY = random.Next(-20, 20);
-            if (speedX == 0)
-                speedX = random.Next(1, 20);
-            if (speedY == 0)
-                speedY = random.Next(1, 20);
-
-            MoveX = speedX;
-            MoveY = speedY;
-
-            Count++;
+            int rndY = random.Next(-25, 25);
+            MoveY = (rndY != 0 ? rndY : 1); //乱数で移動量を設定
+            BallCnt++;
         }
+
+        public static int BallCnt { get => ballCnt; set => ballCnt = value; }
 
         //メソッド
         public override void Move(PictureBox pbBar, PictureBox pbBall) {
 
-            Rectangle rBar  = new Rectangle(pbBar.Location.X, pbBar.Location.Y,
-                                            pbBar.Width, pbBar.Height);
+            Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y, pbBar.Width, pbBar.Height);
+            Rectangle rBall = new Rectangle(pbBall.Location.X, pbBall.Location.Y, pbBall.Width, pbBall.Height);
 
-            Rectangle rBall = new Rectangle(pbBall.Location.X, pbBall.Location.Y,
-                                            pbBall.Width, pbBall.Height);
+            Console.WriteLine("Ｘ座標 = {0}, Ｙ座標 = {1}", PosX, PosY);
+            
+            if(PosY > 520 || PosY < 0 || rBar.IntersectsWith(rBall))
+            {
+                MoveY = -MoveY;
+            }
 
-            if (PosX > 730 || PosX < 0 || rBar.IntersectsWith(rBall))     //X座標の壁判定
-                MoveX *= -1;
-            if (PosY > 500 || PosY < 0)     //Y座標の壁判定
-                MoveY *= -1;
-
+            if (PosX > 730 || PosX < 0)
+            {
+                MoveX = -MoveX;
+            }
             PosX += MoveX;
             PosY += MoveY;
         }
-
         public override void Move(Keys direction) {
+            ;
         }
     }
 }
