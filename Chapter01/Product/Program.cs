@@ -31,18 +31,19 @@ namespace ProductSample {
             //Console.WriteLine("10日前は" + daysBefor10.Year + "年" + daysBefor10.Month + "月" + daysBefor10.Day + "日です。");
             #endregion
 
-            //DateTime today = DateTime.Today;
-            //DateTime barthday;
-            
             Console.WriteLine("誕生日を入力してください。");
             Console.Write("西暦：");
-            Console.ReadLine();
+            int birthYear  = int.Parse(Console.ReadLine());
             Console.Write("月：");
-            Console.ReadLine();
+            int birthMonth = int.Parse(Console.ReadLine());
             Console.Write("日：");
-            Console.ReadLine();
+            int birthDay   = int.Parse(Console.ReadLine());
 
-            //Console.WriteLine("あなたが生まれてから今日まで"+  +"日目です。");
+            DateTime today      = DateTime.Today;
+            DateTime birthday   = new DateTime(birthYear, birthMonth, birthDay);
+
+            TimeSpan difference = today - birthday;
+            Console.WriteLine("あなたが生まれてから今日まで" + difference.Days + "日目です。");
         }
     }
 }
