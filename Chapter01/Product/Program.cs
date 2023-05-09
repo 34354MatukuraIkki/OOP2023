@@ -9,6 +9,8 @@ namespace ProductSample {
     class Program {
         static void Main(string[] args) {
 
+            string[] DayOfWeek = { "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" };
+
             #region P26のサンプルプログラム
             //インスタンスの生成
             //Product karinto = new Product(123, "かりんとう", 180);
@@ -44,6 +46,8 @@ namespace ProductSample {
 
             TimeSpan difference = today - birthday;
             Console.WriteLine("あなたが生まれてから今日まで" + difference.Days + "日目です。");
+
+            Console.WriteLine("あなたが生まれた曜日は" + DayOfWeek[(int)birthday.DayOfWeek] + "です。");
         }
     }
 }
