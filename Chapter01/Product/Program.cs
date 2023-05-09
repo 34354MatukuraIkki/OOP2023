@@ -18,16 +18,31 @@ namespace ProductSample {
             //Console.WriteLine("大福もちの税込価格：" + daihuku.GetPriceIncludingTax());
             #endregion
 
-            //DateTime date = new DateTime(2023, 5, 8);
-            DateTime date = DateTime.Today;
-            Console.WriteLine("今日の日付：" + date.Year + "年" + date.Month + "月" + date.Day + "日");
+            #region 演習１
+            ////DateTime date = new DateTime(2023, 5, 8);
+            //DateTime date = DateTime.Today;
+            //Console.WriteLine("今日の日付：" + date.Year + "年" + date.Month + "月" + date.Day + "日");
 
-            //10日後を求める
-            DateTime daysAfter10 = date.AddDays(10);
-            Console.WriteLine("10日後は" + daysAfter10.Year + "年" + daysAfter10.Month + "月" + daysAfter10.Day + "日です。");
-            //10日前を求める
-            DateTime daysBefor10 = date.AddDays(-10);
-            Console.WriteLine("10日前は" + daysBefor10.Year + "年" + daysBefor10.Month + "月" + daysBefor10.Day + "日です。");
+            ////10日後を求める
+            //DateTime daysAfter10 = date.AddDays(10);
+            //Console.WriteLine("10日後は" + daysAfter10.Year + "年" + daysAfter10.Month + "月" + daysAfter10.Day + "日です。");
+            ////10日前を求める
+            //DateTime daysBefor10 = date.AddDays(-10);
+            //Console.WriteLine("10日前は" + daysBefor10.Year + "年" + daysBefor10.Month + "月" + daysBefor10.Day + "日です。");
+            #endregion
+
+            //DateTime today = DateTime.Today;
+            //DateTime barthday;
+            
+            Console.WriteLine("誕生日を入力してください。");
+            Console.Write("西暦：");
+            Console.ReadLine();
+            Console.Write("月：");
+            Console.ReadLine();
+            Console.Write("日：");
+            Console.ReadLine();
+
+            //Console.WriteLine("あなたが生まれてから今日まで"+  +"日目です。");
         }
     }
 }
