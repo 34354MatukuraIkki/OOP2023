@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exercise01 {
-    class Program {
-        static void Main(string[] args) {
-
+            //2.1.3
             var songs = new Song[] {
                 new Song("Let it be", "The Beatles", 243),
                 new Song("Bridge Over Troubled Water", "Simon & Garfunkel", 293),
@@ -15,7 +6,6 @@ namespace Exercise01 {
                 new Song("Honesty", "Billy Joel", 231),
                 new Song("I Will Always Love You", "Whitney Houston", 273),
             };
-
             PrintSongs(songs);
 
             var lists = new List<Song>();
@@ -26,13 +16,3 @@ namespace Exercise01 {
             lists.Add(new Song("I Will Always Love You", "Whitney Houston", 273));
 
             PrintSongs(lists);
-        }
-
-        private static void PrintSongs(IEnumerable<Song> songs) {
-            foreach (var song in songs) {
-                Console.WriteLine("{0},{1},{2:m\\:ss}",
-                    song.Titles, song.ArtistName, TimeSpan.FromSeconds(song.Length));
-            }
-        }
-    }
-}
