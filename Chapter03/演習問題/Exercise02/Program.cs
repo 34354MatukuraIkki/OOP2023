@@ -24,6 +24,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<string> names) {
+            Console.WriteLine("都市名を入力。空白で終了。");
             do {
                 var line = Console.ReadLine();
                 if (string.IsNullOrEmpty(line))
@@ -48,7 +49,9 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<string> names) {
             var cities = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
-            foreach (var city in cities) { 
+            foreach (var city in cities) {
+                var name = names.Find(s => s.Length == city);
+                Console.Write(name + "．");
                 Console.WriteLine(city);
             }
         }
