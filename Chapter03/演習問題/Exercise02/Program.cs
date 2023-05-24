@@ -41,7 +41,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
-            var cityName = names.FindAll(s => s.Contains("o"));
+            //var cityName = names.FindAll(s => s.Contains("o"));
+            var cityName = names.Where(s => s.Contains("o")).ToArray();
             foreach (var city in cityName) {
                 Console.WriteLine(city);
             }
