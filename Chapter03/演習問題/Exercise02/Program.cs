@@ -50,8 +50,6 @@ namespace Exercise02 {
         private static void Exercise2_4(List<string> names) {
             var cities = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
             foreach (var city in cities) {
-                var name = names.Find(s => s.Length == city);
-                Console.Write(name + "．");
                 Console.WriteLine(city);
             }
         }
