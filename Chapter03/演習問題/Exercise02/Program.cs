@@ -49,6 +49,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> names) {
+            //var cities = names.Where(s => s.StartsWith("B")).Select(s => new {s, s.Length});
+            //foreach (var city in cities) {
+            //    Console.WriteLine("{0},{1}", city.s, city.Length);
+            //}
             var cities = names.Where(s => s.StartsWith("B")).Select(s => s.Length);
             foreach (var city in cities) {
                 Console.WriteLine(city);
