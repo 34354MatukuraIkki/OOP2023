@@ -16,18 +16,37 @@ namespace Section04 {
             #endregion
 
             #region null合体演算子
-            string code = "12345";
-            var message = GetMessage(code) ?? DefaultMessage();
-            Console.WriteLine(message);
+            //string code = "12345";
+            //var message = GetMessage(code) ?? DefaultMessage();
+            //Console.WriteLine(message);
+            #endregion
+
+            #region null条件演算子
+            Sale sale = null;
+
+            //「int?」はnull許容型、「?.」はnull条件演算子
+            int? ret = sale?.Amount;
+
+            Console.WriteLine(ret);
             #endregion
         }
 
         private static object GetMessage(object code) {
             return null;
         }
-
         private static object DefaultMessage() {
             return "Default Message";
         }
+    }
+
+    //売上クラス
+    public class Sale {
+        //店舗名
+        public string ShopName { get; set; }
+        //商品カテゴリー
+        public string ProductCategory { get; set; }
+        //売上高
+        public int Amount { get; set; }
+
     }
 }
