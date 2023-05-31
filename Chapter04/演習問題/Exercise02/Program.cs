@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
-
             // 4.2.1
             var ymCollection = new YearMonth[] {
                 new YearMonth(1980, 1),
