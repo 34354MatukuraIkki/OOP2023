@@ -46,8 +46,6 @@ namespace Exercise02 {
             return null;
         }
 
-
-
         private static void Exercise2_4(YearMonth[] ymCollection) {
             if (FindFirst21C(ymCollection) == null)
                 Console.WriteLine("21世紀のデータはありません");
@@ -56,7 +54,13 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(YearMonth[] ymCollection) {
+            var nextMonth = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
+            foreach (var ym in nextMonth) {
+                Console.WriteLine(ym);
+            }
 
+            //var nextMonth = ymCollection.Select(ym => ym.AddOneMonth()).OrderBy(ym=>ym.Year).ToArray();
+            //Exercise2_2(nextMonth);
         }
     }
 }
