@@ -14,7 +14,11 @@ namespace Exercise01 {
             Console.WriteLine("文字列１：");
             var s2 = Console.ReadLine();
 
-            string.Compare(s1, s2, ignoreCase: true);
+            if (string.Compare(s1, s2, ignoreCase: true) == 0)
+                Console.WriteLine("等しい");
+            else
+                Console.WriteLine("等しくない");
+
         }
     }
 }
