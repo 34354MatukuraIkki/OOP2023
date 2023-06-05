@@ -62,8 +62,6 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_5(string text) {
-            //var array = text.Split(' ').ToArray();
-            
             string[] words = text.Split(' ');
             var sb = new StringBuilder();
             foreach (var word in words) {
@@ -76,6 +74,17 @@ namespace Exercise03 {
             }
             var texts = sb.ToString();
             Console.WriteLine(texts);
+
+            //var array = text.Split(' ').ToArray();
+            //var sb = new StringBuilder(words[0]);
+            //foreach (var word in words.Skip(1)) {
+            //    if (word != words[0]) {
+            //        sb.Append(' ');
+            //        sb.Append(word);
+            //    }
+            //    else
+            //        sb.Append(word);
+            //}
         }
     }
 }
