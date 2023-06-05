@@ -67,12 +67,12 @@ namespace Exercise03 {
             string[] words = text.Split(' ');
             var sb = new StringBuilder();
             foreach (var word in words) {
-                if (word == words[0])
-                    sb.Append(word);
-                else {
+                if (word != words[0]) {
                     sb.Append(' ');
                     sb.Append(word);
                 }
+                else
+                    sb.Append(word);
             }
             var texts = sb.ToString();
             Console.WriteLine(texts);
