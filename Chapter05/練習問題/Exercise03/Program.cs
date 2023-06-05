@@ -63,17 +63,20 @@ namespace Exercise03 {
 
         private static void Exercise3_5(string text) {
             string[] words = text.Split(' ');
-            var sb = new StringBuilder();
-            foreach (var word in words) {
-                if (word != words[0]) {
-                    sb.Append(' ');
-                    sb.Append(word);
+
+            if (words.Length > 0) {
+                var sb = new StringBuilder();
+                foreach (var word in words) {
+                    if (word != words[0]) {
+                        sb.Append(' ');
+                        sb.Append(word);
+                    }
+                    else
+                        sb.Append(word);
                 }
-                else
-                    sb.Append(word);
+                var texts = sb.ToString();
+                Console.WriteLine(texts);
             }
-            var texts = sb.ToString();
-            Console.WriteLine(texts);
 
             //var array = text.Split(' ').ToArray();
             //var sb = new StringBuilder(words[0]);
