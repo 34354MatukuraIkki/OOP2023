@@ -26,11 +26,13 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            int count = 0;
-            foreach (var str in text) {
-                if (String.IsNullOrWhiteSpace(str.ToString()))
-                    count++;
-            }
+            //int count = 0;
+            //foreach (var str in text) {
+            //    if (string.IsNullOrWhiteSpace(str.ToString()))
+            //        count++;
+            //}
+
+            int count = text.Count(s => s.ToString().Contains(' '));
             Console.WriteLine("空白数：" + count);
         }
 
