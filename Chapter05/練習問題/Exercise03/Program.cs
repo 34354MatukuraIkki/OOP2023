@@ -31,7 +31,7 @@ namespace Exercise03 {
                 if (String.IsNullOrWhiteSpace(str.ToString()))
                     count++;
             }
-            Console.WriteLine(count);
+            Console.WriteLine("空白数：" + count);
         }
 
         private static void Exercise3_2(string text) {
@@ -42,7 +42,7 @@ namespace Exercise03 {
 
         private static void Exercise3_3(string text) {
             string[] words = text.Split(' ');
-            Console.WriteLine(words.Length);
+            Console.WriteLine("単語数：" + words.Length);
         }
 
         private static void Exercise3_4(string text) {
@@ -54,7 +54,13 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_5(string text) {
-        
+            string[] words = text.Split(' ');
+            var sb = new StringBuilder();
+            foreach (var word in words) {
+                sb.Append(word + " ");
+            }
+            var texts = sb.ToString();
+            Console.WriteLine(texts);
         }
     }
 }
