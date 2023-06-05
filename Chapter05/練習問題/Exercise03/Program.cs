@@ -33,11 +33,13 @@ namespace Exercise03 {
             //}
 
             int count = text.Count(s => s.ToString().Contains(' '));
+            //int count = text.Count(c => c == ' ');
+
             Console.WriteLine("空白数：" + count);
         }
 
         private static void Exercise3_2(string text) {
-            var target = text;
+            var target = text;  //省略可
             var replaced = target.Replace("big", "small");
             Console.WriteLine(replaced);
         }
@@ -53,13 +55,24 @@ namespace Exercise03 {
                 if (word.Length < 5)
                     Console.WriteLine(word);
             }
+
+            //string[] words = text.Split(' ').Where(word => word.Length <= 4);
+            //foreach (var word in words)
+                //Console.WriteLine(word);
         }
 
         private static void Exercise3_5(string text) {
+            //var array = text.Split(' ').ToArray();
+            
             string[] words = text.Split(' ');
             var sb = new StringBuilder();
             foreach (var word in words) {
-                sb.Append(word + " ");
+                if (word == words[0])
+                    sb.Append(word);
+                else {
+                    sb.Append(' ');
+                    sb.Append(word);
+                }
             }
             var texts = sb.ToString();
             Console.WriteLine(texts);
