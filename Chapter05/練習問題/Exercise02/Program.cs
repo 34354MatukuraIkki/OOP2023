@@ -13,7 +13,7 @@ namespace Exercise02 {
             int height;
             
             if (int.TryParse(str, out height)) {
-                Console.WriteLine("{0:#,0}",height);
+                Console.WriteLine("{0:#,#}",height);
             }
             else {
                 Console.WriteLine("変換できません");
