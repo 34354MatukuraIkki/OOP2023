@@ -29,10 +29,16 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            
+            var reverse = numbers.Reverse();
+            foreach (var number in reverse) {
+                Console.WriteLine(number);
+                if (number == 3)
+                    break;
+            }
         }
 
         private static void Exercise1_3(int[] numbers) {
+            
         }
 
         private static void Exercise1_4(int[] numbers) {
