@@ -41,9 +41,14 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<Book> books) {
+            foreach (var book in books) {
+                if (book.Title == "C#プログラミングの新常識")
+                    Console.WriteLine("価格：{0} ページ数：{1}", book.Price, book.Pages);
+            }
         }
 
         private static void Exercise2_2(List<Book> books) {
+            
         }
 
         private static void Exercise2_3(List<Book> books) {
