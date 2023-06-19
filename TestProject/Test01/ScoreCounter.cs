@@ -34,10 +34,10 @@ namespace Test01 {
         public IDictionary<string, int> GetPerStudentScore() {
             var dict = new SortedDictionary<string, int>();
             foreach (var score in _score) {
-                if (dict.ContainsKey(score.Name))
-                    dict[score.Name] += score.Score;    //学生の名前がすでにある（点数加算）
+                if (dict.ContainsKey(score.Subject))
+                    dict[score.Subject] += score.Score;    //科目がすでにある（点数加算）
                 else
-                    dict[score.Name] = score.Score;     //学生の名前がない（新規格納）
+                    dict[score.Subject] = score.Score;     //科目がない（新規格納）
             }
             return dict;
         }
