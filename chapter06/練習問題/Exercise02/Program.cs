@@ -42,7 +42,7 @@ namespace Exercise02 {
 
         private static void Exercise2_1(List<Book> books) {
             foreach (var book in books) {
-                if (book.Title == "C#プログラミングの新常識")
+                if (book.Title == "ワンダフル・C#ライフ")
                     Console.WriteLine("価格：{0} ページ数：{1}", book.Price, book.Pages);
             }
         }
@@ -64,6 +64,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_5(List<Book> books) {
+            var book = books.Where(x => x.Price < 4000).Max(m=>m.Pages);
+            Console.WriteLine(book);
         }
 
         private static void Exercise2_6(List<Book> books) {
