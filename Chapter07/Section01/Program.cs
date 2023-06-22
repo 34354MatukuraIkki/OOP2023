@@ -31,7 +31,7 @@ namespace Section01 {
                 Console.WriteLine("県庁所在地の登録");
                 Console.Write("県名：");
                 place = Console.ReadLine();
-                if (place == "９９９")
+                if (place == "999"|| place == "９９９")
                     break;
                 if (Dict.ContainsKey(place))
                     Console.WriteLine("すでに登録してあります。");
@@ -40,9 +40,20 @@ namespace Section01 {
                 location = Console.ReadLine();
                 Dict[place] = location;
             }
-            Console.Write("県名を入力：");
-            var search = Console.ReadLine();
-            Console.WriteLine("{0}です。", Dict[search]);
+
+            Console.WriteLine("１：一覧表示　２：県名指定");
+            Console.Write("＞");
+            var which = Console.ReadLine();
+            if (which == "１"|| which == "1") {
+                foreach (var city in Dict) {
+                    Console.WriteLine("{0}({1})", city.Key, city.Value);
+                }
+            }
+            else {
+                Console.Write("県名を入力：");
+                var search = Console.ReadLine();
+                Console.WriteLine("{0}です。", Dict[search]);
+            }
         }
     }
 }
