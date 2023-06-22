@@ -33,7 +33,10 @@ namespace Section01 {
                     break;
                 Console.Write("所在地：");
                 var location = Console.ReadLine();
-                Dict[place] = location;
+                if (Dict.ContainsKey(place))
+                    Console.WriteLine("すでに登録してあります。");
+                else
+                    Dict[place] = location;
             }
             Console.Write("県名を入力：");
             var search = Console.ReadLine();
