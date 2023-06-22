@@ -33,12 +33,12 @@ namespace Section01 {
                 place = Console.ReadLine();
                 if (place == "９９９")
                     break;
-                Console.Write("所在地：");
-                location = Console.ReadLine();
                 if (Dict.ContainsKey(place))
                     Console.WriteLine("すでに登録してあります。");
                 else
-                    Dict[place] = location;
+                    Console.Write("所在地：");
+                location = Console.ReadLine();
+                Dict[place] = location;
             }
             Console.Write("県名を入力：");
             var search = Console.ReadLine();
