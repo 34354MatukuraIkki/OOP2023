@@ -25,14 +25,16 @@ namespace Section01 {
             var Dict = new Dictionary<string, string>() {
             };
 
+            string place,location;
+
             while (true) {
                 Console.WriteLine("県庁所在地の登録");
                 Console.Write("県名：");
-                var place = Console.ReadLine();
+                place = Console.ReadLine();
                 if (place == "９９９")
                     break;
                 Console.Write("所在地：");
-                var location = Console.ReadLine();
+                location = Console.ReadLine();
                 if (Dict.ContainsKey(place))
                     Console.WriteLine("すでに登録してあります。");
                 else
