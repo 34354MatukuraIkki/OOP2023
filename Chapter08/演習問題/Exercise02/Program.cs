@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
-            foreach (var dayweek in Enum.GetValues(typeof(DayOfWeek))) {
-
-            }
+            var date = DateTime.Now;
+            DateTime nextDayOfWeek = NextDay(date, DayOfWeek.Thursday);
+            Console.WriteLine(nextDayOfWeek);
+        }
+        public static DateTime NextDay(DateTime date,DayOfWeek dayOfWeek) {
+            var days = (int)dayOfWeek - (int)(date.DayOfWeek);
+            if (days <= 0)
+                days += 7;
+            return date.AddDays(days);
         }
     }
 }
