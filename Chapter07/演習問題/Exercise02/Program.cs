@@ -14,13 +14,15 @@ namespace Exercise02 {
             abbrs.Add("NPT", "核兵器不拡散条約");
 
             //7.2.3
-            Console.WriteLine(abbrs.AbbreviationCount());
+            int count = abbrs.Count;
+            Console.WriteLine(count);
 
             //7.2.3（Remove呼び出し）
             abbrs.Remove("APEC");
             abbrs.Remove("NGO");
 
             //7.2.4
+
         }
     }
 }

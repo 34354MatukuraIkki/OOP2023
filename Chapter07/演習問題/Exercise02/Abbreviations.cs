@@ -45,10 +45,7 @@ namespace Exercise02 {
         }
 
         //7.2.1
-        public int AbbreviationCount() {
-            var abbCount = _dict.Count();
-            return abbCount;
-        }
+        public int Count { get { return _dict.Count; } }
 
         //7.2.2
         public bool Remove(string abb) {
