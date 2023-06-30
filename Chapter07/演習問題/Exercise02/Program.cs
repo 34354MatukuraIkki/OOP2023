@@ -22,7 +22,6 @@ namespace Exercise02 {
             abbrs.Remove("NGO");
 
             //7.2.4
-
         }
     }
 }
