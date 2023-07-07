@@ -121,6 +121,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "フォームアプリケー
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp", "Chapter08\フォームアプリケーション\CalendarApp\CalendarApp.csproj", "{CCCE7AA3-F312-447C-A9A8-8BFC400DE2CD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormApps", "FormApps", "{B21AFD7A-4BAA-4844-8010-B9ED6E05A530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarReportSystem", "FormApps\CarReportSystem\CarReportSystem.csproj", "{3A9B1B3D-4764-4B08-91DB-6CF3595FC408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -275,6 +279,10 @@ Global
 		{CCCE7AA3-F312-447C-A9A8-8BFC400DE2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCCE7AA3-F312-447C-A9A8-8BFC400DE2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCCE7AA3-F312-447C-A9A8-8BFC400DE2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A9B1B3D-4764-4B08-91DB-6CF3595FC408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9B1B3D-4764-4B08-91DB-6CF3595FC408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9B1B3D-4764-4B08-91DB-6CF3595FC408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9B1B3D-4764-4B08-91DB-6CF3595FC408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -329,6 +337,7 @@ Global
 		{813C5156-9912-4703-A3BC-F84B4B306345} = {AD19C192-6437-40A7-B287-C452D491A0A9}
 		{21CBB703-C930-4119-BDD5-BF26BCD49CD7} = {EEBA4EA5-E6B0-4D71-86E7-93373BF44D99}
 		{CCCE7AA3-F312-447C-A9A8-8BFC400DE2CD} = {21CBB703-C930-4119-BDD5-BF26BCD49CD7}
+		{3A9B1B3D-4764-4B08-91DB-6CF3595FC408} = {B21AFD7A-4BAA-4844-8010-B9ED6E05A530}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E57239BC-60F6-4414-A679-C3694E019D15}
