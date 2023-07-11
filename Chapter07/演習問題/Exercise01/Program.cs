@@ -15,36 +15,39 @@ namespace Exercise01 {
 
         private static void Exercise1_1(string text) {
             var dict = new Dictionary<Char, int>();
-            foreach (var ch in text) {
-                var c = char.ToUpper(ch);
-
-                if ('A' <= c && c <= 'Z') {
-                    if (dict.ContainsKey(c))
-                        ++dict[c];
-                    else
-                        dict[c] = 1;
+            foreach (var c in text) {
+                var uc = char.ToUpper(c);
+                if ('A' <= uc && uc <= 'Z' ) {
+                    if (dict.ContainsKey(uc)) {
+                        dict[uc]++;
+                    }
+                    else {
+                        dict[uc] = 1;
+                    }
                 }
             }
-            foreach (var item in dict.OrderBy(x => x.Key)) {
-                Console.WriteLine("'{0}':{1}", item.Key, item.Value);
+            foreach (var item in dict.OrderBy(c=>c.Key)) {
+                Console.WriteLine("{0}:{1}", item.Key, item.Value);
             }
         }
 
         private static void Exercise1_2(string text) {
             var dict = new SortedDictionary<Char, int>();
-            foreach (var ch in text) {
-                var c = char.ToUpper(ch);
-
-                if ('A' <= c && c <= 'Z') {
-                    if (dict.ContainsKey(c))
-                        ++dict[c];
-                    else
-                        dict[c] = 1;
+            foreach (var c in text) {
+                var uc = char.ToUpper(c);
+                if ('A' <= uc && uc <= 'Z') {
+                    if (dict.ContainsKey(uc)) {
+                        dict[uc]++;
+                    }
+                    else {
+                        dict[uc] = 1;
+                    }
                 }
             }
             foreach (var item in dict) {
-                Console.WriteLine("'{0}':{1}", item.Key, item.Value);
+                Console.WriteLine("{0}:{1}", item.Key, item.Value);
             }
+
         }
     }
 }
