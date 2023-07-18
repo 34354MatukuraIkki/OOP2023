@@ -47,12 +47,33 @@ namespace CarReportSystem {
                 CarImage = pbCarImage.Image,
             };
             CarReports.Add(carReport);
-            if (!cbAuthor.Items.Contains(cbAuthor.Text))
-                cbAuthor.Items.Add(cbAuthor.Text);
-            if (!cbCarName.Items.Contains(cbCarName.Text))
-                cbCarName.Items.Add(cbCarName.Text);
-            dgvCarReports.CurrentCell.Selected = false;
+            addCbAuthor(cbAuthor.Text);
+            addCbCarName(cbCarName.Text);
             clearItem();
+            dgvCarReports.CurrentCell.Selected = false;
+        }
+
+        //コンボボックスに記録者を登録
+        private void addCbAuthor(string author) {
+            if (!cbAuthor.Items.Contains(author))
+                cbAuthor.Items.Add(author);
+        }
+
+        //コンボボックスに車名を登録
+        private void addCbCarName(string carname) {
+            if (!cbCarName.Items.Contains(carname))
+                cbCarName.Items.Add(carname);
+        }
+
+        //日付以外の項目を非表示
+        private void clearItem() {
+            cbAuthor.Text = null;
+            foreach (var item in gbMaker.Controls) {
+                ((RadioButton)item).Checked = false;
+            }
+            cbCarName.Text = null;
+            tbReport.Text = null;
+            pbCarImage.Image = null;
         }
 
         //修正ボタンイベントハンドラ
@@ -158,17 +179,6 @@ namespace CarReportSystem {
             }
             btModifiReport.Enabled = true;
             btDeleteReport.Enabled = true;
-        }
-
-        //日付以外の項目を非表示
-        private void clearItem() {
-            cbAuthor.Text = null;
-            foreach (var item in gbMaker.Controls) {
-                ((RadioButton)item).Checked = false;
-            }
-            cbCarName.Text = null;
-            tbReport.Text = null;
-            pbCarImage.Image = null;
         }
 
         //ステータスラベルのテキスト表示・引数なしは非表示
