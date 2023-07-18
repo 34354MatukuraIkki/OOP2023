@@ -17,9 +17,5 @@ namespace CarReportSystem {
         private void btOK_Click(object sender, EventArgs e) {
             this.Close();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-            textBox1.Text = "version：V.1";
-        }
     }
 }
