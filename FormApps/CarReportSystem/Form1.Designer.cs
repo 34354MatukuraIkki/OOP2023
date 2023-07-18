@@ -24,6 +24,7 @@ namespace CarReportSystem {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,6 +68,8 @@ namespace CarReportSystem {
             this.statusDisp = new System.Windows.Forms.StatusStrip();
             this.tsInfoText = new System.Windows.Forms.ToolStripStatusLabel();
             this.cdColor = new System.Windows.Forms.ColorDialog();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.tsTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarImage)).BeginInit();
@@ -464,6 +467,7 @@ namespace CarReportSystem {
             // statusDisp
             // 
             this.statusDisp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsTimer,
             this.tsInfoText});
             this.statusDisp.Location = new System.Drawing.Point(0, 555);
             this.statusDisp.Name = "statusDisp";
@@ -477,6 +481,16 @@ namespace CarReportSystem {
             this.tsInfoText.Name = "tsInfoText";
             this.tsInfoText.Size = new System.Drawing.Size(118, 17);
             this.tsInfoText.Text = "toolStripStatusLabel1";
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // tsTimer
+            // 
+            this.tsTimer.Name = "tsTimer";
+            this.tsTimer.Size = new System.Drawing.Size(118, 17);
+            this.tsTimer.Text = "toolStripStatusLabel1";
             // 
             // Form1
             // 
@@ -569,6 +583,8 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem ヘルプHToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem バージョン情報ToolStripMenuItem;
         private System.Windows.Forms.ColorDialog cdColor;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolStripStatusLabel tsTimer;
     }
 }
 

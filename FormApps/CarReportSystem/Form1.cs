@@ -19,6 +19,8 @@ namespace CarReportSystem {
         }
         
         private void Form1_Load(object sender, EventArgs e) {
+            tsTimer.Text = DateTime.Now.ToString("HH時mm分：");
+            timer.Start();
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifiReport.Enabled = false; //マスクする
             btDeleteReport.Enabled = false;
@@ -199,6 +201,10 @@ namespace CarReportSystem {
         //終了メニュー選択時のイベントハンドラ
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        private void timer_Tick(object sender, EventArgs e) {
+            tsTimer.Text = DateTime.Now.ToString("HH時mm分：");
         }
     }
 }
