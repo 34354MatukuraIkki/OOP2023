@@ -194,8 +194,12 @@ namespace CarReportSystem {
         }
         
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            cdColor.ShowDialog();
-            this.BackColor = cdColor.Color;
+            if (cdColor.ShowDialog() == DialogResult.OK)
+                this.BackColor = cdColor.Color;
+        }
+
+        private void timer_Tick(object sender, EventArgs e) {
+            tsTimer.Text = DateTime.Now.ToString("HH時mm分：");
         }
 
         //終了メニュー選択時のイベントハンドラ
@@ -203,8 +207,8 @@ namespace CarReportSystem {
             Application.Exit();
         }
 
-        private void timer_Tick(object sender, EventArgs e) {
-            tsTimer.Text = DateTime.Now.ToString("HH時mm分：");
+        private void btScaleChange_Click(object sender, EventArgs e) {
+            pbCarImage.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }
