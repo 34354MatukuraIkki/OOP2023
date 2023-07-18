@@ -24,6 +24,8 @@ namespace CarReportSystem {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifiReport.Enabled = false; //マスクする
             btDeleteReport.Enabled = false;
+            btImageDelete.Enabled = false;
+            btScaleChange.Enabled = false;
             tsInfoText.Text = "ここにメッセージを表示できます。";
         }
 
@@ -160,13 +162,18 @@ namespace CarReportSystem {
 
         //イメージ画像をファイルから追加
         private void btImageOpen_Click(object sender, EventArgs e) {
-            ofdImageFileOpen.ShowDialog();
-            pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK) {
+                pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+                btImageDelete.Enabled = true;
+                btScaleChange.Enabled = true;
+            }
         }
 
         //イメージ画像削除
         private void btImageDelete_Click(object sender, EventArgs e) {
             pbCarImage.Image = null;
+            btImageDelete.Enabled = false;
+            btScaleChange.Enabled = false;
         }
 
         //レコードの選択時
@@ -207,8 +214,12 @@ namespace CarReportSystem {
             Application.Exit();
         }
 
+        //画像のサイズ変更
         private void btScaleChange_Click(object sender, EventArgs e) {
-            pbCarImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            //mode = mode < 4 ? ++mode : 0; 
+            int mode = (int)pbCarImage.SizeMode;
+            if (++mode > 4) mode = 0;
+            pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
         }
     }
 }
