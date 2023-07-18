@@ -47,8 +47,10 @@ namespace CarReportSystem {
                 CarImage = pbCarImage.Image,
             };
             CarReports.Add(carReport);
-            cbAuthor.Items.Add(cbAuthor.Text);
-            cbCarName.Items.Add(cbCarName.Text);
+            if (!cbAuthor.Items.Contains(cbAuthor.Text))
+                cbAuthor.Items.Add(cbAuthor.Text);
+            if (!cbCarName.Items.Contains(cbCarName.Text))
+                cbCarName.Items.Add(cbCarName.Text);
             dgvCarReports.CurrentCell.Selected = false;
             clearItem();
         }
@@ -179,6 +181,11 @@ namespace CarReportSystem {
             vf.ShowDialog();    //モーダルダイヤログとして表示
         }
         
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            cdColor.ShowDialog();
+            this.BackColor = cdColor.Color;
+        }
+
         //終了メニュー選択時のイベントハンドラ
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
