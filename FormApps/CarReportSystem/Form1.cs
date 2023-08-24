@@ -25,7 +25,7 @@ namespace CarReportSystem {
         }
         
         private void Form1_Load(object sender, EventArgs e) {
-            tsTimer.Text = DateTime.Now.ToString("HH時mm分：");
+            //tsTimer.Text = DateTime.Now.ToString("HH時mm分    ");
             timer.Start();
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifiReport.Enabled = btDeleteReport.Enabled = 
@@ -215,7 +215,7 @@ namespace CarReportSystem {
         }
 
         private void timer_Tick(object sender, EventArgs e) {
-            tsTimer.Text = DateTime.Now.ToString("HH時mm分：");
+            tsTimer.Text = DateTime.Now.ToString("HH時mm分    ");
         }
 
         //画像のサイズ変更
