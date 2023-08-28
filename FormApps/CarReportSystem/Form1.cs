@@ -272,8 +272,8 @@ namespace CarReportSystem {
                         CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
-                        dgvCarReports.CurrentCell.Selected = false;
-                        dgvCarReports.Columns[5].Visible = false;
+                        dgvCarReports.CurrentCell.Selected = dgvCarReports.Columns[5].Visible =
+                        btModifiReport.Enabled = btDeleteReport.Enabled = false;
                         cbAuthor.Items.Clear();
                         cbCarName.Items.Clear();
                         clearItem();
