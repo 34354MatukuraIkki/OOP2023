@@ -278,6 +278,7 @@ namespace CarReportSystem {
                             addCbCarName(item.CarName);
                         }
                         dgvCarReports.CurrentCell.Selected = false;
+                        dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
 
                     }
                 }
