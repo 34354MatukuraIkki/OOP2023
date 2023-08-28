@@ -272,14 +272,15 @@ namespace CarReportSystem {
                         CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
+                        dgvCarReports.CurrentCell.Selected = false;
+                        dgvCarReports.Columns[5].Visible = false;
+                        cbAuthor.Items.Clear();
+                        cbCarName.Items.Clear();
 
                         foreach (var item in CarReports) {
                             addCbAuthor(item.Author);
                             addCbCarName(item.CarName);
                         }
-                        dgvCarReports.CurrentCell.Selected = false;
-                        dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-
                     }
                 }
                 catch (Exception ex) {
