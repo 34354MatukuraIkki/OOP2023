@@ -277,6 +277,8 @@ namespace CarReportSystem {
                             addCbAuthor(item.Author);
                             addCbCarName(item.CarName);
                         }
+                        dgvCarReports.CurrentCell.Selected = false;
+
                     }
                 }
                 catch (Exception ex) {
