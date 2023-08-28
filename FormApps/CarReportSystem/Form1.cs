@@ -23,20 +23,25 @@ namespace CarReportSystem {
             InitializeComponent();
             dgvCarReports.DataSource = CarReports;
         }
-        
+
         private void Form1_Load(object sender, EventArgs e) {
             //tsTimer.Text = DateTime.Now.ToString("HH時mm分    ");
             timer.Start();
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
-            btModifiReport.Enabled = btDeleteReport.Enabled = 
+            btModifiReport.Enabled = btDeleteReport.Enabled =
                 btImageDelete.Enabled = btScaleChange.Enabled = false; //マスクする
             tsInfoText.Text = "ここにメッセージを表示できます。";
 
             //設定ファイルを逆シリアル化して背景を設定
-            using (var reader = XmlReader.Create("settings.xml")) {
-                var serializer = new XmlSerializer(typeof(Settings));
-                settings = serializer.Deserialize(reader) as Settings;
-                BackColor = Color.FromArgb(settings.MainFormColor);
+            try {
+                using (var reader = XmlReader.Create("settings.xml")) {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    settings = serializer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settings.MainFormColor);
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -237,6 +242,18 @@ namespace CarReportSystem {
             using(var writer = XmlWriter.Create("settings.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
+            }
+        }
+
+        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
+            if(sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
+
+            }
+        }
+
+        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
+            if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+
             }
         }
     }
