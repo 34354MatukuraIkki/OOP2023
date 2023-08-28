@@ -276,7 +276,7 @@ namespace CarReportSystem {
                         dgvCarReports.Columns[5].Visible = false;
                         cbAuthor.Items.Clear();
                         cbCarName.Items.Clear();
-
+                        clearItem();
                         foreach (var item in CarReports) {
                             addCbAuthor(item.Author);
                             addCbCarName(item.CarName);
