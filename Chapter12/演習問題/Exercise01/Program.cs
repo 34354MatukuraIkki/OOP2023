@@ -10,23 +10,13 @@ using System.Xml.Serialization;
 namespace Exercise01 {
     class Program {
         static void Main(string[] args) {
-            var employees = new Employee[] {
-            new Employee {
-                Id = 34354,
-                Name = "松倉一輝",
-                HireDate = DateTime.Today,
-            },
-
-            new Employee {
-                Id = 34321,
-                Name = "吉岡亮",
-                HireDate = DateTime.Now,
-            }
-            };
-        
-            using (var writer = XmlWriter.Create("Employees.xml")) {
-                var serializer = new DataContractSerializer(employees.GetType());
-                serializer.WriteObject(writer, employees);
+            
+            using (var reader = XmlReader.Create("Employees.xml")) {
+                var serializer = new DataContractSerializer(typeof(Employee[]));
+                var employees = serializer.ReadObject(reader) as Employee[];
+                foreach (var employee in employees) {
+                    Console.WriteLine(employee);
+                }
             }
         }
     }
