@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 namespace Exercise02 {
     class Program {
         static void Main(string[] args) {
-            var novelist = Exercise2_1("Sample.xml");
+            var novelist = Exercise2_1("sample.xml");
             Exercise2_2(novelist, "novelist.json");
 
             //// これは確認のためのコード 12.2.1
