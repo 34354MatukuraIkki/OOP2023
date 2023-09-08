@@ -186,7 +186,14 @@ namespace CarReportSystem {
                 setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-                pbCarImage.Image = ByteArrayToImage((byte[])dgvCarReports.CurrentRow.Cells[6].Value);
+                if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
+                    pbCarImage.Image = ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value);
+                    btImageDelete.Enabled = btScaleChange.Enabled = true;
+                }
+                else {
+                    pbCarImage.Image = null;
+                    btImageDelete.Enabled = btScaleChange.Enabled = false;
+                }
             }
             btModifiReport.Enabled = btDeleteReport.Enabled = true;
         }
