@@ -116,13 +116,9 @@ namespace CarReportSystem {
 
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
+            this.carReportTableTableAdapter.Update(infosys202334DataSet.CarReportTable);
             clearItem();
-            if (dgvCarReports.CurrentCell != null) {
-                CarReports.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
-                if (dgvCarReports.CurrentCell == null) {
-                    btModifiReport.Enabled = btDeleteReport.Enabled = false;
-                }
-            }
         }
 
         //ラジオボタンで選択されているメーカーを返却
@@ -273,29 +269,29 @@ namespace CarReportSystem {
         }
 
         private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    //逆シリアル化でバイナリ形式を取り込む
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvCarReports.DataSource = null;
-                        dgvCarReports.DataSource = CarReports;
-                        dgvCarReports.CurrentCell.Selected = dgvCarReports.Columns[5].Visible =
-                        btModifiReport.Enabled = btDeleteReport.Enabled = false;
-                        cbAuthor.Items.Clear();
-                        cbCarName.Items.Clear();
-                        clearItem();
-                        foreach (var item in CarReports) {
-                            addCbAuthor(item.Author);
-                            addCbCarName(item.CarName);
-                        }
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
+            //    try {
+            //        //逆シリアル化でバイナリ形式を取り込む
+            //        var bf = new BinaryFormatter();
+            //        using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
+            //            CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+            //            dgvCarReports.DataSource = null;
+            //            dgvCarReports.DataSource = CarReports;
+            //            dgvCarReports.CurrentCell.Selected = dgvCarReports.Columns[5].Visible =
+            //            btModifiReport.Enabled = btDeleteReport.Enabled = false;
+            //            cbAuthor.Items.Clear();
+            //            cbCarName.Items.Clear();
+            //            clearItem();
+            //            foreach (var item in CarReports) {
+            //                addCbAuthor(item.Author);
+            //                addCbCarName(item.CarName);
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex) {
+            //        MessageBox.Show(ex.Message);
+            //    }
+            //}
         }
 
         private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
