@@ -27,7 +27,7 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            
+
             //tsTimer.Text = DateTime.Now.ToString("HH時mm分    ");
             timer.Start();
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
@@ -75,6 +75,7 @@ namespace CarReportSystem {
             addCbCarName(cbCarName.Text);
             clearItem();
             dgvCarReports.CurrentCell.Selected = false;
+            btImageDelete.Enabled = btScaleChange.Enabled = false;
         }
 
         //コンボボックスに記録者を登録
@@ -119,6 +120,7 @@ namespace CarReportSystem {
             dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentCell.RowIndex);
             this.carReportTableTableAdapter.Update(infosys202334DataSet.CarReportTable);
             clearItem();
+            btImageDelete.Enabled = btScaleChange.Enabled = false;
         }
 
         //ラジオボタンで選択されているメーカーを返却
@@ -183,14 +185,19 @@ namespace CarReportSystem {
                 setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-                if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
-                    pbCarImage.Image = ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value);
-                    btImageDelete.Enabled = btScaleChange.Enabled = true;
-                }
-                else {
-                    pbCarImage.Image = null;
-                    btImageDelete.Enabled = btScaleChange.Enabled = false;
-                }
+
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)
+                    && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
+                    ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
+                btImageDelete.Enabled = btScaleChange.Enabled = true;
+                //if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
+                //    pbCarImage.Image = ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value);
+                //    btImageDelete.Enabled = btScaleChange.Enabled = true;
+                //}
+                //else {
+                //    pbCarImage.Image = null;
+                //    btImageDelete.Enabled = btScaleChange.Enabled = false;
+                //}
             }
             btModifiReport.Enabled = btDeleteReport.Enabled = true;
         }
@@ -218,7 +225,7 @@ namespace CarReportSystem {
             var vf = new VersionForm();
             vf.ShowDialog();    //モーダルダイヤログとして表示
         }
-        
+
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cdColor.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColor.Color;
@@ -246,52 +253,10 @@ namespace CarReportSystem {
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルのシリアル化
-            using(var writer = XmlWriter.Create("settings.xml")) {
+            using (var writer = XmlWriter.Create("settings.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
             }
-        }
-
-        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (sfdCarRepoSave.ShowDialog() == DialogResult.OK) {
-                try {
-
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdCarRepoSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, CarReports);
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private void 開くOToolStripMenuItem_Click(object sender, EventArgs e) {
-            //if(ofdCarRepoOpen.ShowDialog() == DialogResult.OK) {
-            //    try {
-            //        //逆シリアル化でバイナリ形式を取り込む
-            //        var bf = new BinaryFormatter();
-            //        using (FileStream fs = File.Open(ofdCarRepoOpen.FileName, FileMode.Open, FileAccess.Read)) {
-            //            CarReports = (BindingList<CarReport>)bf.Deserialize(fs);
-            //            dgvCarReports.DataSource = null;
-            //            dgvCarReports.DataSource = CarReports;
-            //            dgvCarReports.CurrentCell.Selected = dgvCarReports.Columns[5].Visible =
-            //            btModifiReport.Enabled = btDeleteReport.Enabled = false;
-            //            cbAuthor.Items.Clear();
-            //            cbCarName.Items.Clear();
-            //            clearItem();
-            //            foreach (var item in CarReports) {
-            //                addCbAuthor(item.Author);
-            //                addCbCarName(item.CarName);
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex) {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
         }
 
         private void carReportTableBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
@@ -300,10 +265,18 @@ namespace CarReportSystem {
             this.tableAdapterManager.UpdateAll(this.infosys202334DataSet);
         }
 
-        private void btConnection_Click(object sender, EventArgs e) {
+        private void 接続NToolStripMenuItem_Click(object sender, EventArgs e) {
+            dbConeection();
+        }
+
+        private void dbConeection() {
             // TODO: このコード行はデータを 'infosys202334DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202334DataSet.CarReportTable);
             dgvCarReports.ClearSelection();     //選択解除
+            foreach (var CarReport in infosys202334DataSet.CarReportTable) {
+                addCbAuthor(CarReport.Author);
+                addCbCarName(CarReport.CarName);
+            }
         }
     }
 }
