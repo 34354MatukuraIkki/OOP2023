@@ -280,31 +280,39 @@ namespace CarReportSystem {
             }
         }
 
+        //記録者検索
         private void btAuthorSearch_Click(object sender, EventArgs e) {
             if (tbAuthorSearch.Text.Equals("")) {
                 statusLabelDisp("記録者を入力してください");
                 return;
             } else {
-            carReportTableTableAdapter.FillByAuthor(this.infosys202334DataSet.CarReportTable, tbAuthorSearch.Text);
+                carReportTableTableAdapter.FillByAuthor(this.infosys202334DataSet.CarReportTable, tbAuthorSearch.Text);
             }
         }
 
+        //車名検索
         private void btCarNameSearch_Click(object sender, EventArgs e) {
             if (tbCarNameSearch.Text.Equals("")) {
                 statusLabelDisp("車名を入力してください");
                 return;
             } else {
-            carReportTableTableAdapter.FillByCarName(this.infosys202334DataSet.CarReportTable, tbCarNameSearch.Text);
+                carReportTableTableAdapter.FillByCarName(this.infosys202334DataSet.CarReportTable, tbCarNameSearch.Text);
             }
         }
 
+        //日付検索
         private void btDateSearch_Click(object sender, EventArgs e) {
             carReportTableTableAdapter.FillByBetweenDate(this.infosys202334DataSet.CarReportTable, dtpBeforeDateSearch.Text,dtpAfterDateSearch.Text);
         }
 
-        private void btReset_Click(object sender, EventArgs e) {            
-            this.carReportTableTableAdapter.Fill(this.infosys202334DataSet.CarReportTable);
-            dgvCarReports.ClearSelection();     //選択解除
+        private void btReset_Click(object sender, EventArgs e) {
+            if (dgvCarReports.CurrentCell == null) {
+                statusLabelDisp("データベースに接続してください");
+                return;
+            } else {
+                this.carReportTableTableAdapter.Fill(this.infosys202334DataSet.CarReportTable);
+                dgvCarReports.ClearSelection();     //選択解除
+            }
         }
     }
 }

@@ -279,8 +279,6 @@ namespace CarReportSystem {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class CarReportTableDataTable : global::System.Data.TypedTableBase<CarReportTableRow> {
             
-            private global::System.Data.DataColumn columnId;
-            
             private global::System.Data.DataColumn columnDate;
             
             private global::System.Data.DataColumn columnAuthor;
@@ -292,6 +290,8 @@ namespace CarReportSystem {
             private global::System.Data.DataColumn columnReport;
             
             private global::System.Data.DataColumn columnImage;
+            
+            private global::System.Data.DataColumn columnId;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -324,14 +324,6 @@ namespace CarReportSystem {
             protected CarReportTableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -384,6 +376,14 @@ namespace CarReportSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -422,13 +422,13 @@ namespace CarReportSystem {
             public CarReportTableRow AddCarReportTableRow(System.DateTime Date, string Author, string Maker, string CarName, string Report, byte[] Image) {
                 CarReportTableRow rowCarReportTableRow = ((CarReportTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Date,
                         Author,
                         Maker,
                         CarName,
                         Report,
-                        Image};
+                        Image,
+                        null};
                 rowCarReportTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCarReportTableRow);
                 return rowCarReportTableRow;
@@ -458,20 +458,18 @@ namespace CarReportSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
                 this.columnDate = base.Columns["Date"];
                 this.columnAuthor = base.Columns["Author"];
                 this.columnMaker = base.Columns["Maker"];
                 this.columnCarName = base.Columns["CarName"];
                 this.columnReport = base.Columns["Report"];
                 this.columnImage = base.Columns["Image"];
+                this.columnId = base.Columns["Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
                 this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate);
                 this.columnAuthor = new global::System.Data.DataColumn("Author", typeof(string), null, global::System.Data.MappingType.Element);
@@ -484,20 +482,22 @@ namespace CarReportSystem {
                 base.Columns.Add(this.columnReport);
                 this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImage);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
-                this.columnId.Unique = true;
                 this.columnAuthor.AllowDBNull = false;
                 this.columnAuthor.MaxLength = 50;
                 this.columnMaker.MaxLength = 50;
                 this.columnCarName.AllowDBNull = false;
                 this.columnCarName.MaxLength = 50;
                 this.columnReport.MaxLength = 500;
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -640,17 +640,6 @@ namespace CarReportSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableCarReportTable.IdColumn]));
-                }
-                set {
-                    this[this.tableCarReportTable.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime Date {
                 get {
                     try {
@@ -732,6 +721,17 @@ namespace CarReportSystem {
                 }
                 set {
                     this[this.tableCarReportTable.ImageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableCarReportTable.IdColumn]));
+                }
+                set {
+                    this[this.tableCarReportTable.IdColumn] = value;
                 }
             }
             
@@ -943,19 +943,18 @@ namespace CarReportSystem.infosys202334DataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CarReportTable";
-            tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Date", "Date");
             tableMapping.ColumnMappings.Add("Author", "Author");
             tableMapping.ColumnMappings.Add("Maker", "Maker");
             tableMapping.ColumnMappings.Add("CarName", "CarName");
             tableMapping.ColumnMappings.Add("Report", "Report");
             tableMapping.ColumnMappings.Add("Image", "Image");
+            tableMapping.ColumnMappings.Add("Id", "Id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [CarReportTable] WHERE (([Id] = @Original_Id) AND ((@IsNull_Date = 1 AND [Date] IS NULL) OR ([Date] = @Original_Date)) AND ([Author] = @Original_Author) AND ((@IsNull_Maker = 1 AND [Maker] IS NULL) OR ([Maker] = @Original_Maker)) AND ([CarName] = @Original_CarName) AND ((@IsNull_Report = 1 AND [Report] IS NULL) OR ([Report] = @Original_Report)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [CarReportTable] WHERE (((@IsNull_Date = 1 AND [Date] IS NULL) OR ([Date] = @Original_Date)) AND ([Author] = @Original_Author) AND ((@IsNull_Maker = 1 AND [Maker] IS NULL) OR ([Maker] = @Original_Maker)) AND ([CarName] = @Original_CarName) AND ((@IsNull_Report = 1 AND [Report] IS NULL) OR ([Report] = @Original_Report)) AND ([Id] = @Original_Id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Author", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -964,12 +963,11 @@ namespace CarReportSystem.infosys202334DataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CarName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CarName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Report", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Report", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Report", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Report", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [CarReportTable] ([Date], [Author], [Maker], [CarName], [Report], [Im" +
-                "age]) VALUES (@Date, @Author, @Maker, @CarName, @Report, @Image);\r\nSELECT Id, Da" +
-                "te, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE (Id = SCOPE_" +
-                "IDENTITY())";
+                "age]) VALUES (@Date, @Author, @Maker, @CarName, @Report, @Image)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Author", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -979,8 +977,7 @@ namespace CarReportSystem.infosys202334DataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [CarReportTable] SET [Date] = @Date, [Author] = @Author, [Maker] = @Maker, [CarName] = @CarName, [Report] = @Report, [Image] = @Image WHERE (([Id] = @Original_Id) AND ((@IsNull_Date = 1 AND [Date] IS NULL) OR ([Date] = @Original_Date)) AND ([Author] = @Original_Author) AND ((@IsNull_Maker = 1 AND [Maker] IS NULL) OR ([Maker] = @Original_Maker)) AND ([CarName] = @Original_CarName) AND ((@IsNull_Report = 1 AND [Report] IS NULL) OR ([Report] = @Original_Report)));
-SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [CarReportTable] SET [Date] = @Date, [Author] = @Author, [Maker] = @Maker, [CarName] = @CarName, [Report] = @Report, [Image] = @Image WHERE (((@IsNull_Date = 1 AND [Date] IS NULL) OR ([Date] = @Original_Date)) AND ([Author] = @Original_Author) AND ((@IsNull_Maker = 1 AND [Maker] IS NULL) OR ([Maker] = @Original_Maker)) AND ([CarName] = @Original_CarName) AND ((@IsNull_Report = 1 AND [Report] IS NULL) OR ([Report] = @Original_Report)) AND ([Id] = @Original_Id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Author", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -988,7 +985,6 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CarName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CarName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Report", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Report", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Author", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -997,7 +993,7 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CarName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CarName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Report", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Report", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Report", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Report", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1013,7 +1009,7 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT                      Id, Date, Author, Maker, CarName, Report, Image\r\nFROM" +
+            this._commandCollection[0].CommandText = "SELECT                      Date, Author, Maker, CarName, Report, Image, Id\r\nFROM" +
                 "                         CarReportTable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -1024,9 +1020,8 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@author", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Author", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT                      Id, Date, Author, Maker, CarName, Report, Image\r\nFROM" +
-                "                         CarReportTable\r\nWHERE                       (Date BETWE" +
-                "EN @sdate AND @edate)";
+            this._commandCollection[2].CommandText = "SELECT Author, CarName, Date, Id, Image, Maker, Report FROM CarReportTable WHERE " +
+                "(Date BETWEEN @sdate AND @edate)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sdate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@edate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1197,44 +1192,44 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, global::System.Nullable<global::System.DateTime> Original_Date, string Original_Author, string Original_Maker, string Original_CarName, string Original_Report) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+        public virtual int Delete(global::System.Nullable<global::System.DateTime> Original_Date, string Original_Author, string Original_Maker, string Original_CarName, string Original_Report, int Original_Id) {
             if ((Original_Date.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_Date.Value));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Date.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             if ((Original_Author == null)) {
                 throw new global::System.ArgumentNullException("Original_Author");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Author));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Author));
             }
             if ((Original_Maker == null)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Maker));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Maker));
             }
             if ((Original_CarName == null)) {
                 throw new global::System.ArgumentNullException("Original_CarName");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_CarName));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_CarName));
             }
             if ((Original_Report == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Report));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Report));
             }
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1312,7 +1307,7 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> Date, string Author, string Maker, string CarName, string Report, byte[] Image, int Original_Id, global::System.Nullable<global::System.DateTime> Original_Date, string Original_Author, string Original_Maker, string Original_CarName, string Original_Report, int Id) {
+        public virtual int Update(global::System.Nullable<global::System.DateTime> Date, string Author, string Maker, string CarName, string Report, byte[] Image, global::System.Nullable<global::System.DateTime> Original_Date, string Original_Author, string Original_Maker, string Original_CarName, string Original_Report, int Original_Id) {
             if ((Date.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Date.Value));
             }
@@ -1349,44 +1344,43 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((byte[])(Image));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
             if ((Original_Date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_Date.Value));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_Date.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_Author == null)) {
                 throw new global::System.ArgumentNullException("Original_Author");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Author));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Author));
             }
             if ((Original_Maker == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Maker));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Maker));
             }
             if ((Original_CarName == null)) {
                 throw new global::System.ArgumentNullException("Original_CarName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_CarName));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_CarName));
             }
             if ((Original_Report == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Report));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Report));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1401,14 +1395,6 @@ SELECT Id, Date, Author, Maker, CarName, Report, Image FROM CarReportTable WHERE
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> Date, string Author, string Maker, string CarName, string Report, byte[] Image, int Original_Id, global::System.Nullable<global::System.DateTime> Original_Date, string Original_Author, string Original_Maker, string Original_CarName, string Original_Report) {
-            return this.Update(Date, Author, Maker, CarName, Report, Image, Original_Id, Original_Date, Original_Author, Original_Maker, Original_CarName, Original_Report, Original_Id);
         }
     }
     
