@@ -30,6 +30,7 @@ namespace CarReportSystem {
 
             //tsTimer.Text = DateTime.Now.ToString("HH時mm分    ");
             timer.Start();
+            dgvCarReports.Columns[0].Visible = false;
             dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
             btModifiReport.Enabled = btDeleteReport.Enabled =
                 btImageDelete.Enabled = btScaleChange.Enabled = false; //マスクする
