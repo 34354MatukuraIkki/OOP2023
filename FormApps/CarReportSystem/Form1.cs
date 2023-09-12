@@ -280,19 +280,30 @@ namespace CarReportSystem {
         }
 
         private void btAuthorSearch_Click(object sender, EventArgs e) {
+            if (tbAuthorSearch.Text.Equals("")) {
+                statusLabelDisp("記録者を入力してください");
+                return;
+            } else {
             carReportTableTableAdapter.FillByAuthor(this.infosys202334DataSet.CarReportTable, tbAuthorSearch.Text);
+            }
         }
 
         private void btCarNameSearch_Click(object sender, EventArgs e) {
+            if (tbCarNameSearch.Text.Equals("")) {
+                statusLabelDisp("車名を入力してください");
+                return;
+            } else {
             carReportTableTableAdapter.FillByCarName(this.infosys202334DataSet.CarReportTable, tbCarNameSearch.Text);
+            }
         }
 
         private void btDateSearch_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate(this.infosys202334DataSet.CarReportTable, dtpDateSearch.Text);
+            carReportTableTableAdapter.FillByBetweenDate(this.infosys202334DataSet.CarReportTable, dtpBeforeDateSearch.Text,dtpAfterDateSearch.Text);
         }
 
-        private void btReset(object sender, EventArgs e) {
-
+        private void btReset_Click(object sender, EventArgs e) {            
+            this.carReportTableTableAdapter.Fill(this.infosys202334DataSet.CarReportTable);
+            dgvCarReports.ClearSelection();     //選択解除
         }
     }
 }
