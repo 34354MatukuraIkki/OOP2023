@@ -10,6 +10,27 @@ using System.Threading.Tasks;
 namespace SampleEntityFrameWork {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine("# 1.1");
+            Exercise1_1();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.2");
+            Exercise1_2();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.3");
+            Exercise1_3();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.4");
+            Exercise1_4();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.5");
+            Exercise1_5();
+
+            Console.ReadLine();
+
             //InsertBooks();
             //Console.Write("データを挿入しました。続けるにはEnterキーを押してください。");
 
@@ -31,8 +52,28 @@ namespace SampleEntityFrameWork {
                 Console.WriteLine(count);
             }
 
-            Console.ReadLine();     //コンソール画面をすぐに消さないためにキー入力待ちにする
-            Console.WriteLine();
+            //Console.ReadLine();     //コンソール画面をすぐに消さないためにキー入力待ちにする
+            //Console.WriteLine();
+        }
+
+        private static void Exercise1_1() {
+        
+        }
+
+        private static void Exercise1_2() {
+        
+        }
+
+        private static void Exercise1_3() {
+        
+        }
+
+        private static void Exercise1_4() {
+        
+        }
+
+        private static void Exercise1_5() {
+        
         }
 
         // List 13-5
