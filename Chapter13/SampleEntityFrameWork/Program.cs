@@ -66,7 +66,13 @@ namespace SampleEntityFrameWork {
         }
 
         private static void Exercise1_3() {
-        
+            using (var db = new BooksDbContext()) {
+                var books = db.Books.Where(t => t.Title.Length == db.Books.Max(s => s.Title.Length))
+                    .ToArray();
+                foreach (var book in books) {
+                    Console.WriteLine(book.Title);
+                }
+            };
         }
 
         private static void Exercise1_4() {
