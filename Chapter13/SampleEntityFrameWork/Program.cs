@@ -57,12 +57,12 @@ namespace SampleEntityFrameWork {
         }
 
         private static void Exercise1_1() {
-            AddAuthors();
-            AddBooks();
+            //AddAuthors();
+            //AddBooks();
         }
 
         private static void Exercise1_2() {
-           
+            DisplayAllBooks();
         }
 
         private static void Exercise1_3() {
@@ -109,7 +109,7 @@ namespace SampleEntityFrameWork {
         static IEnumerable<Book> GetBooks() {
             using (var db = new BooksDbContext()) {
                 return db.Books
-                    .Where(Book => Book.PublishedYear > 1900)
+                    .Where(book => book.PublishedYear > 1900)
                     .Include(nameof(Author))
                     .ToList();
             }
@@ -119,7 +119,7 @@ namespace SampleEntityFrameWork {
         static void DisplayAllBooks() {
             var books = GetBooks();
             foreach (var book in books) {
-                Console.WriteLine($"{book.Title}{book.PublishedYear}");
+                Console.WriteLine($"{book.Title},{book.PublishedYear},{book.Author.Name}");
             }
             Console.ReadLine(); //コンソール画面をすぐに消さないためにキー入力待ちにする
         }
