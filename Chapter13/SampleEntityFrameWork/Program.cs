@@ -44,13 +44,13 @@ namespace SampleEntityFrameWork {
             //    Console.WriteLine($"{book.Title}{book.Author.Name}");
             //}
 
-            using (var db = new BooksDbContext()) {
+            //using (var db = new BooksDbContext()) {
 
-                db.Database.Log = sql => { Debug.Write(sql); };
+            //    db.Database.Log = sql => { Debug.Write(sql); };
 
-                var count = db.Books.Count();
-                Console.WriteLine(count);
-            }
+            //    var count = db.Books.Count();
+            //    Console.WriteLine(count);
+            //}
 
             //Console.ReadLine();     //コンソール画面をすぐに消さないためにキー入力待ちにする
             //Console.WriteLine();
@@ -76,7 +76,12 @@ namespace SampleEntityFrameWork {
         }
 
         private static void Exercise1_4() {
-        
+            using (var db = new BooksDbContext()) {
+                var books = db.Books.OrderBy(b => b.PublishedYear).ToArray();
+                for (int i = 0; i < 3; i++) {
+                    Console.WriteLine($"{books[i].Title},{books[i].Author.Name}");
+                }
+            };
         }
 
         private static void Exercise1_5() {
