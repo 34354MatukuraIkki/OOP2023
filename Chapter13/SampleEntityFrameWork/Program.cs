@@ -57,11 +57,12 @@ namespace SampleEntityFrameWork {
         }
 
         private static void Exercise1_1() {
-        
+            AddAuthors();
+            AddBooks();
         }
 
         private static void Exercise1_2() {
-        
+           
         }
 
         private static void Exercise1_3() {
@@ -127,15 +128,15 @@ namespace SampleEntityFrameWork {
         private static void AddAuthors() {
             using (var db = new BooksDbContext()) {
                 var author1 = new Author {
-                    Birthday = new DateTime(1878, 12, 7),
-                    Gender = "F",
-                    Name = "与謝野晶子",
+                    Birthday = new DateTime(1888, 12, 26),
+                    Gender = "M",
+                    Name = "菊池寛",
                 };
                 db.Authors.Add(author1);
                 var author2 = new Author {
-                    Birthday = new DateTime(1896, 8, 27),
+                    Birthday = new DateTime(1899, 6, 14),
                     Gender = "M",
-                    Name = "宮沢賢治",
+                    Name = "川端康成",
                 };
                 db.Authors.Add(author2);
                 db.SaveChanges();
@@ -145,22 +146,36 @@ namespace SampleEntityFrameWork {
         // List 13-10
         private static void AddBooks() {
             using (var db = new BooksDbContext()) {
-                var author1 = db.Authors.Single(a => a.Name == "与謝野晶子");
-                var book1 = new Book {
-                    Title = "みだれ髪",
-                    PublishedYear = 2000,
-                    Author = author1,
-                };
-                db.Books.Add(book1);
-                var author2 = db.Authors.Single(a => a.Name == "宮沢賢治");
-                var book2 = new Book {
-                    Title = "銀河鉄道の夜",
-                    PublishedYear = 1989,
-                    Author = author2,
-                };
-                db.Books.Add(book2);
-                db.SaveChanges();
-            }
+            var searchAuthor1 = db.Authors.Single(a => a.Name == "夏目漱石");
+            var book1 = new Book {
+                Title = "こころ",
+                PublishedYear = 1991,
+                Author = searchAuthor1,
+            };
+            db.Books.Add(book1);
+            var searchAuthor2 = db.Authors.Single(a => a.Name == "川端康成");
+            var book2 = new Book {
+                Title = "伊豆の踊子",
+                PublishedYear = 2003,
+                Author = searchAuthor2,
+            };
+            db.Books.Add(book2);
+            var searchAuthor3 = db.Authors.Single(a => a.Name == "菊池寛");
+            var book3 = new Book {
+                Title = "真珠夫人",
+                PublishedYear = 2002,
+                Author = searchAuthor3,
+            };
+            db.Books.Add(book3);
+            var searchAuthor4 = db.Authors.Single(a => a.Name == "宮沢賢治");
+            var book4 = new Book {
+                Title = "注文の多い料理店",
+                PublishedYear = 2000,
+                Author = searchAuthor4,
+            };
+            db.Books.Add(book4);
+            db.SaveChanges();
+        }
         }
 
         // List 13-11
