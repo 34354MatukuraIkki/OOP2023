@@ -28,6 +28,8 @@ namespace RssReader {
             this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.lbFavorite = new System.Windows.Forms.ListBox();
+            this.btFavorite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbUrl
@@ -54,7 +56,7 @@ namespace RssReader {
             this.lbRssTitle.ItemHeight = 12;
             this.lbRssTitle.Location = new System.Drawing.Point(34, 72);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(751, 100);
+            this.lbRssTitle.Size = new System.Drawing.Size(382, 100);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
             // 
@@ -67,11 +69,33 @@ namespace RssReader {
             this.wbBrowser.Size = new System.Drawing.Size(751, 492);
             this.wbBrowser.TabIndex = 3;
             // 
+            // lbFavorite
+            // 
+            this.lbFavorite.FormattingEnabled = true;
+            this.lbFavorite.ItemHeight = 12;
+            this.lbFavorite.Location = new System.Drawing.Point(448, 72);
+            this.lbFavorite.Name = "lbFavorite";
+            this.lbFavorite.Size = new System.Drawing.Size(241, 100);
+            this.lbFavorite.TabIndex = 4;
+            this.lbFavorite.Click += new System.EventHandler(this.lbFavorite_Click);
+            // 
+            // btFavorite
+            // 
+            this.btFavorite.Location = new System.Drawing.Point(696, 72);
+            this.btFavorite.Name = "btFavorite";
+            this.btFavorite.Size = new System.Drawing.Size(89, 34);
+            this.btFavorite.TabIndex = 5;
+            this.btFavorite.Text = "お気に入り";
+            this.btFavorite.UseVisualStyleBackColor = true;
+            this.btFavorite.Click += new System.EventHandler(this.btFavorite_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 682);
+            this.Controls.Add(this.btFavorite);
+            this.Controls.Add(this.lbFavorite);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
@@ -89,6 +113,8 @@ namespace RssReader {
         private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.ListBox lbFavorite;
+        private System.Windows.Forms.Button btFavorite;
     }
 }
 

@@ -8,5 +8,7 @@ namespace RssReader {
     public class ItemData {
         public string Title { get; set; }
         public string Link { get; set; }
+        public string FavoriteTitle { get; set; }
+        public string FavoriteLink { get; set; }
     }
 }
