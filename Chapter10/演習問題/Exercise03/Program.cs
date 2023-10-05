@@ -15,14 +15,11 @@ namespace Exercise03 {
                "We reorganized the timetable.",
             };
             foreach (var text in texts) {
-                var matches = Regex.Matches(text, @"[Tt]ime");
-                foreach (var word in matches) {
-                    //Console.WriteLine("")
+                var matches = Regex.Matches(text, @"[Tt]ime\b");
+                foreach (Match match in matches) {
+                    Console.WriteLine("{0} : {1}", text, match.Index);
                 }
-
             }
-
-
         }
     }
 }
