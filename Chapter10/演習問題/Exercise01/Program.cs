@@ -22,7 +22,8 @@ namespace Exercise01 {
 
         private static bool IsPhoneNumber(string str) {
             var text = str;
-            bool isMatch = Regex.IsMatch(text, @"^(090)|(080)|(070)-\d{4}-\d{4}$");
+            //bool isMatch = Regex.IsMatch(text, @"^(090)|(080)|(070)-\d{4}-\d{4}$");
+            bool isMatch = Regex.IsMatch(text, @"^0[7-9]0-\d{4}-\d{4}$");
             return isMatch;
         }
     }
