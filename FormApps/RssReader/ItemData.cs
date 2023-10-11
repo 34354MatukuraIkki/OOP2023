@@ -8,7 +8,13 @@ namespace RssReader {
     public class ItemData {
         public string Title { get; set; }
         public string Link { get; set; }
-        public string FavoriteTitle { get; set; }
-        public string FavoriteLink { get; set; }
+
+        public enum Topics {
+            主要,
+            エンタメ,
+            経済,
+            スポーツ,
+            その他,
+        }
     }
 }
