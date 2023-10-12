@@ -39,10 +39,19 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4() {
-
-            var selected = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(b => b.Price);
+            var selected = Library.Books
+                                .OrderByDescending(b=>b.PublishedYear)
+                                .ThenByDescending(b=>b.Price)
+                                .Join(Library.Categories,
+                                book => book.CategoryId,
+                                category => category.Id,
+                                (book, category) => new { 
+                                    Title = book.Title,
+                                    Price = book.Price,
+                                    Category = category.Name,
+                                    PublishedYear = book.PublishedYear });
             foreach (var book in selected) {
-                //Console.WriteLine($"{book.PublishedYear} {book.Price} {book.Title} {}");
+                    Console.WriteLine($"{book.PublishedYear}年 {book.Price}円 {book.Title} ({book.Category})");
             }
         }
 
