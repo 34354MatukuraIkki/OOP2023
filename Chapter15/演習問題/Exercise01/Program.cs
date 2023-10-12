@@ -68,11 +68,16 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            var groups = Library.Categories.GroupBy(c => c.Name).OrderBy(g => g.Key);
+            var groups = Library.Categories
+                                .OrderBy(c=>c.Name)
+                                .GroupJoin(Library.Books,
+                                 c => c.Id,
+                                 b => b.CategoryId,
+                                 (c, books) => new { Category = c.Name, Books = books });
             foreach (var g in groups) {
-                Console.WriteLine(g.Key);
-                foreach (var book in g) {
-                    //Console.WriteLine(Library.Books.);
+                Console.WriteLine($"#{g.Category}");
+                foreach (var book in g.Books) {
+                    Console.WriteLine($" {book.Title}");
                 }
             }
         }
