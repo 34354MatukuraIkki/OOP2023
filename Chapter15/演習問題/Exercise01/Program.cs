@@ -30,16 +30,19 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3() {
-            var countPublishedYear = Library.Books.GroupBy(b => b.PublishedYear).Select(g=>g.OrderBy(b=>b.Title).Count());
+            var countPublishedYear = Library.Books.GroupBy(b => b.PublishedYear)
+                                   .Select(g => new { PublishedYear = g.Key, Count = g.Count() })
+                                   .OrderBy(p => p.PublishedYear);
             foreach (var book in countPublishedYear) {
-                Console.WriteLine(book);
+                Console.WriteLine($"{book.PublishedYear}年 {book.Count}冊");
             }
         }
 
         private static void Exercise1_4() {
+
             var selected = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(b => b.Price);
             foreach (var book in selected) {
-                Console.WriteLine(book);
+                //Console.WriteLine($"{book.PublishedYear} {book.Price} {book.Title} {}");
             }
         }
 
@@ -56,7 +59,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            
+            var groups = Library.Categories.GroupBy(c => c.Name).OrderBy(g => g.Key);
+            foreach (var g in groups) {
+                Console.WriteLine(g.Key);
+                foreach (var book in g) {
+                    //Console.WriteLine(Library.Books.);
+                }
+            }
         }
 
         private static void Exercise1_7() {
