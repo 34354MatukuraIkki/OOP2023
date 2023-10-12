@@ -44,14 +44,19 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_5() {
-            var selected = Library.Books.OrderBy(b => b.CategoryId).Where(b => b.PublishedYear == 2016).Select(b=>b.CategoryId).Distinct();
-            foreach (var book in selected) {
-                Console.WriteLine(Library.Categories.Where(c=>c.Id==book).First());
+            var names = Library.Books.Where(b => b.PublishedYear == 2016)
+                .Join(Library.Categories,
+                    book => book.CategoryId,
+                    category => category.Id,
+                    (book, category) => category.Name).Distinct();
+
+            foreach (var name in names) {
+                Console.WriteLine(name);
             }
         }
 
         private static void Exercise1_6() {
-        
+            
         }
 
         private static void Exercise1_7() {
