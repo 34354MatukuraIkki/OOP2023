@@ -44,7 +44,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_5() {
-        
+            var selected = Library.Books.OrderBy(b => b.CategoryId).Where(b => b.PublishedYear == 2016).Select(b=>b.CategoryId).Distinct();
+            foreach (var book in selected) {
+                Console.WriteLine(Library.Categories.Where(c=>c.Id==book).First());
+            }
         }
 
         private static void Exercise1_6() {
