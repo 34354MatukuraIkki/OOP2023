@@ -30,11 +30,17 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3() {
-           
+            var countPublishedYear = Library.Books.GroupBy(b => b.PublishedYear).Select(g=>g.OrderBy(b=>b.Title).Count());
+            foreach (var book in countPublishedYear) {
+                Console.WriteLine(book);
+            }
         }
 
         private static void Exercise1_4() {
-        
+            var selected = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(b => b.Price);
+            foreach (var book in selected) {
+                Console.WriteLine(book);
+            }
         }
 
         private static void Exercise1_5() {
