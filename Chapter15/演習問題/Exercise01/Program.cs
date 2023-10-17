@@ -83,10 +83,20 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-        
+            var categoryId = Library.Categories.Single(c => c.Name == "Development").Id;
+            var groups = Library.Books
+                                .Where(b => b.CategoryId == categoryId)
+                                .GroupBy(b => b.PublishedYear)
+                                .OrderBy(b => b.Key);
+            foreach (var g in groups) {
+                Console.WriteLine($"#{g.Key}年");
+                foreach (var book in g) {
+                    Console.WriteLine($" {book.Title}");
+                }
+            }
         }
 
-        private static void Exercise1_8() {
+            private static void Exercise1_8() {
         
         }
     }
