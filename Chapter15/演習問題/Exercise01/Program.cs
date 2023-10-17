@@ -74,6 +74,7 @@ namespace Exercise01 {
                                  c => c.Id,
                                  b => b.CategoryId,
                                  (c, books) => new { Category = c.Name, Books = books });
+            
             foreach (var g in groups) {
                 Console.WriteLine($"#{g.Category}");
                 foreach (var book in g.Books) {
@@ -88,6 +89,7 @@ namespace Exercise01 {
                                 .Where(b => b.CategoryId == categoryId)
                                 .GroupBy(b => b.PublishedYear)
                                 .OrderBy(b => b.Key);
+            
             foreach (var g in groups) {
                 Console.WriteLine($"#{g.Key}年");
                 foreach (var book in g) {
@@ -96,8 +98,17 @@ namespace Exercise01 {
             }
         }
 
-            private static void Exercise1_8() {
-        
+        private static void Exercise1_8() {
+            var groups = Library.Categories
+                                .GroupJoin(Library.Books,
+                                 c => c.Id,
+                                 b => b.CategoryId,
+                                 (c, b) => new { CategoryName = c.Name, Count = b.Count() })
+                                .Where(x => x.Count >= 4);
+            
+            foreach (var category in groups) {
+                Console.WriteLine(category.CategoryName);
+            }
         }
     }
 }
