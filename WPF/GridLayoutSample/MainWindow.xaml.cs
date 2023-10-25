@@ -21,5 +21,29 @@ namespace GridLayoutSample {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e) {
+            checkBoxTextBlock.Text = "チェック済み";
+        }
+
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e) {
+            checkBoxTextBlock.Text = "未チェック";
+        }
+
+        private void redRadioButton_Checked(object sender, RoutedEventArgs e) {
+            colorTextBlock.Text = "赤";
+        }
+
+        private void yellowRadioButton_Checked(object sender, RoutedEventArgs e) {
+            colorTextBlock.Text = "黄";
+        }
+
+        private void blueRadioButton_Checked(object sender, RoutedEventArgs e) {
+            colorTextBlock.Text = "青";
+        }
+
+        private void seasonComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            seasonTextBlock.Text = (string)((ComboBoxItem)(seasonComboBox.SelectedItem)).Content;
+        }
     }
 }
