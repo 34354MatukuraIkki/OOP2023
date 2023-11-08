@@ -96,6 +96,7 @@ namespace RssReader {
             this.gbTopics.TabIndex = 5;
             this.gbTopics.TabStop = false;
             this.gbTopics.Text = "groupBox1";
+            this.gbTopics.VisibleChanged += new System.EventHandler(this.gbTopics_VisibleChanged);
             // 
             // rbEconomy
             // 

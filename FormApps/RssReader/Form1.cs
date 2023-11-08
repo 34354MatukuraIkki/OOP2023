@@ -17,7 +17,10 @@ namespace RssReader {
 
         public Form1() {
             InitializeComponent();
-
+            ItemDatas.Add(new ItemData() { Title = "主要", Link = "https://news.yahoo.co.jp/rss/topics/top-picks.xml" });
+            ItemDatas.Add(new ItemData() { Title = "エンタメ", Link = "https://news.yahoo.co.jp/rss/topics/entertainment.xml" });
+            ItemDatas.Add(new ItemData() { Title = "経済", Link = "https://news.yahoo.co.jp/rss/topics/business.xml" });
+            ItemDatas.Add(new ItemData() { Title = "スポーツ", Link = "https://news.yahoo.co.jp/rss/topics/sports.xml" });
         }
 
         private void btGet_Click(object sender, EventArgs e) {
@@ -53,6 +56,13 @@ namespace RssReader {
                 }
             }
             return ItemData.Topics.その他;
+        }
+
+        private void gbTopics_VisibleChanged(object sender, EventArgs e) {
+            foreach (var itemData in ItemDatas) {
+            //if(itemData.Title==getSelectedMaker())
+                lbRssTitle.Items.Add(itemData.Title);
+            }
         }
     }
 }
