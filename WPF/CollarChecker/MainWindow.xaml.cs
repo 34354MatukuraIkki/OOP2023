@@ -54,11 +54,13 @@ namespace CollarChecker {
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var selectColor = (MyColor)sender;
-            var color = selectColor.Color;
-            rSlider.Value = color.R;
-            gSlider.Value = color.G;
-            bSlider.Value = color.B;
+            foreach (var color in stockColors) {
+                if (color.Name == (string)((ListBox)sender).SelectedItem) {
+                    rSlider.Value = color.Color.R;
+                    gSlider.Value = color.Color.G;
+                    bSlider.Value = color.Color.B;
+                }
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
