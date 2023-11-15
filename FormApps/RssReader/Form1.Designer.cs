@@ -33,6 +33,8 @@ namespace RssReader {
             this.rbEconomy = new System.Windows.Forms.RadioButton();
             this.rbSport = new System.Windows.Forms.RadioButton();
             this.rbEntertainment = new System.Windows.Forms.RadioButton();
+            this.btFavorite = new System.Windows.Forms.Button();
+            this.lbFavorite = new System.Windows.Forms.ListBox();
             this.gbTopics.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,14 +43,14 @@ namespace RssReader {
             this.tbUrl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbUrl.Location = new System.Drawing.Point(34, 26);
             this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(655, 31);
+            this.tbUrl.Size = new System.Drawing.Size(563, 31);
             this.tbUrl.TabIndex = 0;
             // 
             // btGet
             // 
-            this.btGet.Location = new System.Drawing.Point(695, 26);
+            this.btGet.Location = new System.Drawing.Point(619, 26);
             this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(90, 31);
+            this.btGet.Size = new System.Drawing.Size(102, 31);
             this.btGet.TabIndex = 1;
             this.btGet.Text = "取得";
             this.btGet.UseVisualStyleBackColor = true;
@@ -70,7 +72,7 @@ namespace RssReader {
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(751, 492);
+            this.wbBrowser.Size = new System.Drawing.Size(563, 492);
             this.wbBrowser.TabIndex = 3;
             // 
             // rbMain
@@ -81,6 +83,7 @@ namespace RssReader {
             this.rbMain.Size = new System.Drawing.Size(47, 16);
             this.rbMain.TabIndex = 4;
             this.rbMain.TabStop = true;
+            this.rbMain.Tag = "0";
             this.rbMain.Text = "主要";
             this.rbMain.UseVisualStyleBackColor = true;
             // 
@@ -92,10 +95,9 @@ namespace RssReader {
             this.gbTopics.Controls.Add(this.rbMain);
             this.gbTopics.Location = new System.Drawing.Point(439, 72);
             this.gbTopics.Name = "gbTopics";
-            this.gbTopics.Size = new System.Drawing.Size(189, 100);
+            this.gbTopics.Size = new System.Drawing.Size(158, 100);
             this.gbTopics.TabIndex = 5;
             this.gbTopics.TabStop = false;
-            this.gbTopics.Text = "groupBox1";
             this.gbTopics.VisibleChanged += new System.EventHandler(this.gbTopics_VisibleChanged);
             // 
             // rbEconomy
@@ -106,6 +108,7 @@ namespace RssReader {
             this.rbEconomy.Size = new System.Drawing.Size(47, 16);
             this.rbEconomy.TabIndex = 7;
             this.rbEconomy.TabStop = true;
+            this.rbEconomy.Tag = "2";
             this.rbEconomy.Text = "経済";
             this.rbEconomy.UseVisualStyleBackColor = true;
             // 
@@ -117,6 +120,7 @@ namespace RssReader {
             this.rbSport.Size = new System.Drawing.Size(61, 16);
             this.rbSport.TabIndex = 6;
             this.rbSport.TabStop = true;
+            this.rbSport.Tag = "3";
             this.rbSport.Text = "スポーツ";
             this.rbSport.UseVisualStyleBackColor = true;
             // 
@@ -128,14 +132,37 @@ namespace RssReader {
             this.rbEntertainment.Size = new System.Drawing.Size(57, 16);
             this.rbEntertainment.TabIndex = 5;
             this.rbEntertainment.TabStop = true;
+            this.rbEntertainment.Tag = "1";
             this.rbEntertainment.Text = "エンタメ";
             this.rbEntertainment.UseVisualStyleBackColor = true;
+            // 
+            // btFavorite
+            // 
+            this.btFavorite.Location = new System.Drawing.Point(619, 72);
+            this.btFavorite.Name = "btFavorite";
+            this.btFavorite.Size = new System.Drawing.Size(102, 31);
+            this.btFavorite.TabIndex = 6;
+            this.btFavorite.Text = "お気に入り";
+            this.btFavorite.UseVisualStyleBackColor = true;
+            this.btFavorite.Click += new System.EventHandler(this.btFavorite_Click);
+            // 
+            // lbFavorite
+            // 
+            this.lbFavorite.FormattingEnabled = true;
+            this.lbFavorite.ItemHeight = 12;
+            this.lbFavorite.Location = new System.Drawing.Point(619, 126);
+            this.lbFavorite.Name = "lbFavorite";
+            this.lbFavorite.Size = new System.Drawing.Size(185, 544);
+            this.lbFavorite.TabIndex = 7;
+            this.lbFavorite.Click += new System.EventHandler(this.lbFavorite_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 682);
+            this.Controls.Add(this.lbFavorite);
+            this.Controls.Add(this.btFavorite);
             this.Controls.Add(this.gbTopics);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbRssTitle);
@@ -161,6 +188,8 @@ namespace RssReader {
         private System.Windows.Forms.RadioButton rbEconomy;
         private System.Windows.Forms.RadioButton rbSport;
         private System.Windows.Forms.RadioButton rbEntertainment;
+        private System.Windows.Forms.Button btFavorite;
+        private System.Windows.Forms.ListBox lbFavorite;
     }
 }
 
