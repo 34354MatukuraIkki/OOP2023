@@ -115,7 +115,7 @@ namespace RssReader {
             // rbSport
             // 
             this.rbSport.AutoSize = true;
-            this.rbSport.Location = new System.Drawing.Point(101, 41);
+            this.rbSport.Location = new System.Drawing.Point(86, 41);
             this.rbSport.Name = "rbSport";
             this.rbSport.Size = new System.Drawing.Size(61, 16);
             this.rbSport.TabIndex = 6;
@@ -127,7 +127,7 @@ namespace RssReader {
             // rbEntertainment
             // 
             this.rbEntertainment.AutoSize = true;
-            this.rbEntertainment.Location = new System.Drawing.Point(101, 19);
+            this.rbEntertainment.Location = new System.Drawing.Point(86, 19);
             this.rbEntertainment.Name = "rbEntertainment";
             this.rbEntertainment.Size = new System.Drawing.Size(57, 16);
             this.rbEntertainment.TabIndex = 5;

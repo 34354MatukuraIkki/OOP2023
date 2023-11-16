@@ -19,10 +19,10 @@ namespace RssReader {
 
         public Form1() {
             InitializeComponent();
-            TopicItemDatas.Add(new ItemData() { Title = "主要", Link = "https://news.yahoo.co.jp/rss/topics/top-picks.xml" });
-            TopicItemDatas.Add(new ItemData() { Title = "エンタメ", Link = "https://news.yahoo.co.jp/rss/topics/entertainment.xml" });
-            TopicItemDatas.Add(new ItemData() { Title = "経済", Link = "https://news.yahoo.co.jp/rss/topics/business.xml" });
-            TopicItemDatas.Add(new ItemData() { Title = "スポーツ", Link = "https://news.yahoo.co.jp/rss/topics/sports.xml" });
+            TopicItemDatas.Add(new ItemData() { Title = "主要", Link = "https://news.yahoo.co.jp/rss/topics/top-picks.xml"});
+            TopicItemDatas.Add(new ItemData() { Title = "エンタメ", Link = "https://news.yahoo.co.jp/rss/topics/entertainment.xml"});
+            TopicItemDatas.Add(new ItemData() { Title = "経済", Link = "https://news.yahoo.co.jp/rss/topics/business.xml"});
+            TopicItemDatas.Add(new ItemData() { Title = "スポーツ", Link = "https://news.yahoo.co.jp/rss/topics/sports.xml"});
         }
 
         private void btGet_Click(object sender, EventArgs e) {
@@ -51,6 +51,24 @@ namespace RssReader {
                 wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
         }
 
+        private void btFavorite_Click(object sender, EventArgs e) {
+            lbFavorite.Items.Clear();
+
+            foreach (var item in ItemDatas) {
+                if (item.Link == wbBrowser.Url.ToString())
+                    FavoriteItemDatas.Add(new ItemData() { Title = item.Title, Link = wbBrowser.Url.ToString() });
+            }
+
+            foreach (var itemData in FavoriteItemDatas) {
+                lbFavorite.Items.Add(itemData.Title);
+            }
+        }
+
+        private void lbFavorite_Click(object sender, EventArgs e) {
+            if (lbFavorite.SelectedItem != null)
+                wbBrowser.Navigate(FavoriteItemDatas[lbFavorite.SelectedIndex].Link);
+        }
+
         private ItemData.Topics getSelectedMaker() {
             foreach (var item in gbTopics.Controls) {
                 if (((RadioButton)item).Checked) {
@@ -62,26 +80,8 @@ namespace RssReader {
 
         private void gbTopics_VisibleChanged(object sender, EventArgs e) {
             foreach (var item in TopicItemDatas) {
-                if (item.Title == getSelectedMaker().ToString())
+                if (item.Title == Enum.GetName(typeof(ItemData.Topics), getSelectedMaker().ToString()))
                     tbUrl.Text = item.Link;
-            }
-        }
-
-        private void lbFavorite_Click(object sender, EventArgs e) {
-            if (lbFavorite.SelectedItem != null)
-                wbBrowser.Navigate(FavoriteItemDatas[lbFavorite.SelectedIndex].Link);
-        }
-
-        private void btFavorite_Click(object sender, EventArgs e) {
-            lbFavorite.Items.Clear();
-
-            foreach (var item in ItemDatas) {
-                if (item.Link == wbBrowser.Url.ToString())
-                    FavoriteItemDatas.Add(new ItemData() { Title = item.Title, Link = wbBrowser.Url.ToString() });
-            }
-
-            foreach (var itemData in FavoriteItemDatas) {
-                lbFavorite.Items.Add(itemData.Title);
             }
         }
     }

@@ -48,6 +48,10 @@ namespace CollarChecker {
             stockColors.Add(new MyColor() { Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value), Name = $"R = {rValue.Text},G = {gValue.Text},B = {bValue.Text}" });
 
             foreach (var color in stockColors) {
+                foreach (var item in GetColorList()) {
+                    if (color.Color == item.Color)
+                        color.Name = item.Name;
+                }
                 if (!stockList.Items.Contains(color.Name))
                     stockList.Items.Add(color.Name);
             }
